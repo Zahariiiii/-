@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Розклад уроків</title>
+</head>
+<body>
+    <header class="test">
+        <h1>Розклад уроків</h1>
+        <ul>
+        <a style="margin: 30px;" href=""></a>
+        <a style="margin: 30px;" href="">Домашнє завдання</a>
+        <a style="margin: 30px;" href="">Побажання</a>
+        </ul>
+    </header>
+
+    <section id="schedule">
+        <h2>Розклад</h2>
+        <table border="1">
+            <tr>
+                <th>День</th>
+                <th>1 зміна</th>
+                <th>2 зміна</th>
+            </tr>
+            <tr>
+                <td>Понеділок</td>
+                <td>Зар. літ.<br>Іст. укр.</td>
+                <td>Географія<br>Англ. мова<br>Фізра<br>Алгебра<br>Біологія</td>
+            </tr>
+            <tr>
+                <td>Вівторок</td>
+                <td>Англ. мова</td>
+                <td>Хімія<br>Геометрія<br>Фізика<br>Укр. мова<br>Обр. мистецтво</td>
+            </tr>
+            <tr>
+                <td>Середа</td>
+                <td>Інформатика</td>
+                <td>Муз мист<br>Іст укр<br>Укр літ<br>Алгебра<br>Фізра</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="homework">
+        <h2>Завдання до уроку</h2>
+        <label for="day">Оберіть день:</label>
+        <select id="day">
+            <option value="1">Понеділок</option>
+            <option value="2">Вівторок</option>
+            <option value="3">Середа</option>
+            <option value="4">Четвер</option>
+            <option value="5">П'ятниця</option>
+        </select>
+
+        <label for="lesson">Оберіть урок:</label>
+        <select id="lesson">
+            <option value="1">Українська мова</option>
+            <option value="2">Українська література</option>
+            <option value="3">Англійська мова</option>
+            <option value="4">Зарубіжна література</option>
+            <option value="5">Історія України</option>
+            <option value="6">Всесвітня історія</option>
+            <option value="7">Музичне мистецтво</option>
+            <option value="8">Образотворче мистецтво</option>
+            <option value="9">Алгебра</option>
+            <option value="10">Геометрія</option>
+            <option value="11">Біологія</option>
+            <option value="12">Географія</option>
+            <option value="13">Фізика</option>
+            <option value="14">Хімія</option>
+            <option value="15">Трудове навчання</option>
+            <option value="16">Інформатика</option>
+            <option value="17">Основи здоров'я</option>
+            <option value="18">Фізра</option>
+        </select>
+
+        <label for="shift">Оберіть зміну:</label>
+        <select id="shift">
+            <option value="1">1 зміна</option>
+            <option value="2">2 зміна</option>
+        </select>
+
+        <label for="homeworkInput">Введіть завдання:</label>
+        <textarea id="homeworkInput"></textarea>
+
+        <button onclick="loadHomework()">Завантажити дз</button>
+
+        <div id="homeworkContent">
+            <!-- Тут буде виводитися завдання -->
+        </div>
+    </section>
+
+    <script>
+        function loadHomework() {
+            var day = document.getElementById("day").value;
+            var lesson = document.getElementById("lesson").value;
+            var shift = document.getElementById("shift").value;
+            var homeworkInput = document.getElementById("homeworkInput").value;
+            var homeworkContent = document.getElementById("homeworkContent");
+
+            // Ваші завдання для кожного уроку, зміни та дня тижня
+            var homework = {
+                monday: {
+                    1: {
+                        lesson1: "",
+                        lesson2: "",
+                    },
+                    // Додайте аналогічні об'єкти для інших уроків та змін
+                },
+                // Додайте аналогічні об'єкти для інших днів та уроків
+            };
+
+            homework[day][shift][lesson] = homeworkInput;
+            homeworkContent.innerHTML = homework[day][shift][lesson];
+        }
+    </script>
+</body>
+</html>
